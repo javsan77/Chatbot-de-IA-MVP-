@@ -1,4 +1,4 @@
-# 🤖 Chatbot de IA
+# 🤖 Chatbot de IA (MVP)
 
 Este proyecto implementa un chatbot conversacional impulsado por un Large Language Model (LLM). Construido con una arquitectura de microservicios contenerizada con Docker Compose, el sistema busca ser modular, escalable y eficiente.
 
