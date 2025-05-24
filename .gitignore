@@ -1,0 +1,140 @@
+# Creado para un proyecto de microservicios con Java/Spring Boot, Python/FastAPI, Nginx y Docker.
+
+# =====================================================================
+# General / OS / IDE
+# =====================================================================
+.DS_Store # macOS
+.env # Archivos de variables de entorno (sensibles)
+.idea/ # Directorio de proyectos IntelliJ
+.vscode/ # Directorio de proyectos VS Code (a veces quieres ignorar esto, a veces no, depende de tu equipo)
+*.swp
+*.bak
+*~
+*#
+*@
+.metadata # Eclipse
+*.iml # IntelliJ IDEA module files
+.project
+.classpath
+.settings/
+
+# =====================================================================
+# Docker
+# =====================================================================
+# Ignore all Docker bind mounts.
+# If you are using Docker volumes, you can ignore the specific paths where they are mounted.
+# Example for your project:
+# /chatbot-api/chroma_db/ # Si ChromaDB persiste en el volumen de tu API
+# Si usas volúmenes externos nombrados, no se mapean a tu repo local, así que no necesitan ser ignorados aquí.
+
+# Docker build cache (created by Docker Desktop or buildx)
+.dockerignore
+.docker/
+target/docker/
+docker-compose.override.yml # Si lo usas para configuración local que no quieres versionar
+
+# =====================================================================
+# Java / Maven (para el servicio 'backend')
+# =====================================================================
+# Maven project files
+/target/
+/pom.xml.tag
+/pom.xml.bak
+/pom.xml.versionsBackup
+/pom.xml.next
+/release.properties
+/releaseManager.tag
+/build/
+*.jar
+*.war
+*.ear
+*.class
+
+# Logs
+*.log
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# STS (Spring Tool Suite)
+.apt_generated/
+.factorypath
+.springBeans
+
+# Maven wrappers
+/.mvn/wrapper/maven-wrapper.jar
+
+# =====================================================================
+# Python / FastAPI (para el servicio 'chatbot-api')
+# =====================================================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+eggs/
+*.egg-info/
+.install_data
+.bdist.MIPS
+.bdist.MIPSEL
+.make_npck
+
+# Environments
+.env/
+venv/
+env/
+.venv/
+# Carpeta de la base de datos vectorial (si es ChromaDB local y persiste en el proyecto)
+# Asegúrate de que este camino sea correcto relativo a la raíz del repo
+/chatbot-api/chroma_db/
+
+# Logs y otros
+*.log
+*.sqlite3 # Si usas SQLite
+*.db # Otros archivos de base de datos
+
+# =====================================================================
+# Frontend (Nginx + HTML/JS - si evoluciona a Angular/Node)
+# =====================================================================
+# Directorios de módulos de dependencias
+/node_modules/
+
+# Archivos de build/dist
+/dist/
+/build/
+
+# Archivos de log
+*.log
+
+# Si en el futuro usas Angular/npm/yarn
+.angular/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =====================================================================
+# Modelos de LLM (gestionados por Ollama)
+# =====================================================================
+# Los modelos de Ollama se gestionan dentro de los contenedores de Ollama
+# y normalmente no deberían estar en el repositorio Git.
+# Si por alguna razón los tienes copiados en tu repo local para algún fin
+# fuera del contenedor, ignóralos aquí.
+# Por ejemplo:
+# /ollama_models/
