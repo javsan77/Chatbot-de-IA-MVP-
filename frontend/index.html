@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot Demo</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 50px auto; }
+    #chat { white-space: pre-line; background: #f9f9f9; padding: 10px; min-height: 200px; border: 1px solid #ccc; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Chat con mi LLM</h2>
+
+  <div id="chat"></div>
+
+  <input id="input" type="text" placeholder="Escribe un mensaje..." style="width: 80%;">
+  <button onclick="enviar()">Enviar</button>
+
+  <script>
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("input");
+
+    async function enviar() {
+      const mensaje = input.value.trim();
+      if (!mensaje) return;
+
+      chat.textContent += `👤 Tú: ${mensaje}\n`;
+      input.value = "";
+
+      try {
+        const res = await fetch("/api/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: mensaje })
+        });
+
+        const data = await res.json();
+        if (data.response) {
+          chat.textContent += `🤖 Bot: ${data.response}\n`;
+        } else {
+          chat.textContent += `❌ Error: ${data.error || "Sin respuesta"}\n`;
+        }
+      } catch (e) {
+        chat.textContent += `❌ Error de conexión: ${e.message}\n`;
+      }
+    }
+  </script>
+</body>
+</html>
